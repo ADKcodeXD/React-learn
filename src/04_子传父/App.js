@@ -1,35 +1,30 @@
 import React, {Component} from 'react'
-
+import TabControl from './TabControl'
 export default class App extends Component {
-    constructor() {
-        super();
+    constructor(props){
+        super(props);
         this.state={
-            counter:0
+            currIndex:0,
+            currentTitle:"音乐"
+        }
+        this.data={
+            tabData:["音乐","流行","动漫"]
         }
     }
     render() {
+        let {currentTitle}=this.state
         return (
             <div>
-                <h2>当前计数:{this.state.counter}</h2>
-                <button onClick={e=>this.increment()}>+1</button>
-                <Button increment={e=>this.increment()}  />
+                <TabControl itemClick={index=>this.itemClick(index)} titles={this.data.tabData} ></TabControl>
+                <h1>{currentTitle}</h1>
             </div>
+            
         )
     }
-    increment() {
+    itemClick(index){
+        console.log(this);
         this.setState({
-            counter:this.state.counter+1
+            currentTitle:this.data.tabData[index]
         })
-    }
-}
-
-class Button extends Component{
-    render() {
-        const {increment}=this.props
-        return (
-            <div>
-                <button onClick={increment}>+1</button>
-            </div>
-        )
     }
 }
