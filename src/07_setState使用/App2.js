@@ -42,7 +42,6 @@ constructor(){
           <div>age:{this.state.age}</div>
           <button onClick={e=>this.changText()}>改变age</button>
       </div>
-      
     )
   }
   changText(){
